@@ -1,0 +1,12 @@
+None of PyTorch, TensorFlow >= 2.0, or Flax have been found. Models won't be available and only tokenizers, configuration and file/data utilities can be used.
+01/03/2024 00:55:28 - INFO - __main__ -      start!
+01/03/2024 00:55:28 - INFO - __main__ -      build_gen_concode
+Arguments:
+                      savefile: /data1/wanghanbin/CONAN/dataset_ids_codebert/gen/concode/java/dev_ids.jsonl	(default: )
+                          task: concode                                 	(default: gen)
+                tokenizer_path: /data4/codebert/base/                   	(default: )
+                     trainfile: /data1/wanghanbin/CONAN/dataset/gen/concode/java/dev.json	(default: )
+
+0it [00:00, ?it/s]01/03/2024 00:55:28 - INFO - __main__ -      0 done!
+47it [00:00, 465.91it/s]108it [00:00, 546.97it/s]171it [00:00, 582.12it/s]234it [00:00, 600.10it/s]303it [00:00, 628.25it/s]366it [00:00, 611.58it/s]438it [00:00, 642.99it/s]516it [00:00, 685.32it/s]593it [00:00, 707.25it/s]673it [00:01, 735.04it/s]750it [00:01, 739.32it/s]824it [00:01, 730.90it/s]909it [00:01, 764.52it/s]988it [00:01, 769.96it/s]1066it [00:01, 769.81it/s]1144it [00:01, 770.88it/s]1230it [00:01, 794.96it/s]1310it [00:01, 795.15it/s]1398it [00:01, 818.57it/s]1484it [00:02, 823.30it/s]1567it [00:02, 809.22it/s]1649it [00:02, 807.64it/s]1736it [00:02, 822.30it/s]1824it [00:02, 836.98it/s]1917it [00:02, 862.19it/s]2000it [00:02, 760.95it/s]
+01/03/2024 00:55:31 - INFO - __main__ -      done!

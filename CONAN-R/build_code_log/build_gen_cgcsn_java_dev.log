@@ -1,0 +1,12 @@
+None of PyTorch, TensorFlow >= 2.0, or Flax have been found. Models won't be available and only tokenizers, configuration and file/data utilities can be used.
+01/03/2024 00:55:28 - INFO - __main__ -      start!
+01/03/2024 00:55:28 - INFO - __main__ -      build_gen_cgcsn
+Arguments:
+                      savefile: /data1/wanghanbin/CONAN/dataset_ids_codebert/gen/cgcsn/java/dev_ids.jsonl	(default: )
+                          task: gen                                     
+                tokenizer_path: /data4/codebert/base/                   	(default: )
+                     trainfile: /data1/wanghanbin/CONAN/dataset/gen/cgcsn/java/dev.jsonl	(default: )
+
+0it [00:00, ?it/s]01/03/2024 00:55:28 - INFO - __main__ -      0 done!
+122it [00:00, 1219.42it/s]244it [00:00, 1196.03it/s]364it [00:00, 1130.63it/s]485it [00:00, 1157.58it/s]624it [00:00, 1234.41it/s]748it [00:00, 1182.21it/s]867it [00:00, 1179.05it/s]1022it [00:00, 1292.04it/s]1162it [00:00, 1324.02it/s]1295it [00:01, 1311.77it/s]1427it [00:01, 1217.72it/s]1551it [00:01, 1173.21it/s]1670it [00:01, 1076.43it/s]1780it [00:01, 1039.48it/s]1886it [00:01, 973.43it/s] 1991it [00:01, 993.47it/s]2096it [00:01, 1006.57it/s]2230it [00:01, 1096.71it/s]2341it [00:02, 1086.66it/s]2473it [00:02, 1150.91it/s]2592it [00:02, 1161.41it/s]2709it [00:02, 967.36it/s] 2818it [00:02, 998.25it/s]2937it [00:02, 1048.15it/s]3046it [00:02, 991.32it/s] 3149it [00:02, 859.18it/s]3262it [00:03, 924.89it/s]3412it [00:03, 1074.97it/s]3535it [00:03, 1116.07it/s]3665it [00:03, 1167.19it/s]3786it [00:03, 1155.33it/s]3904it [00:03, 1011.51it/s]4010it [00:03, 1011.16it/s]4154it [00:03, 1125.95it/s]4298it [00:03, 1213.04it/s]4451it [00:03, 1301.81it/s]4584it [00:04, 1276.30it/s]4733it [00:04, 1334.01it/s]4868it [00:04, 1257.76it/s]5012it [00:04, 1308.67it/s]5145it [00:04, 1279.17it/s]5183it [00:04, 1137.95it/s]
+01/03/2024 00:55:33 - INFO - __main__ -      done!
