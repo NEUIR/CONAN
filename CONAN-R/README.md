@@ -1,10 +1,10 @@
 # CONAN-R
 
-CONAN-R使用[**SANTA**](https://github.com/OpenMatch/SANTA)初始化，然后在每个生成任务的训练集上进行微调。
+CONAN -r use [SANTA](https://github.com/OpenMatch/SANTA) initialization, and then fine-tune on each task of training set.
 
 ### 1.Requirements
 
-(1)创建虚拟环境
+(1) Creating a virtual Environment
 
 ```bash
 conda create -n conanr python=3.8
@@ -13,7 +13,7 @@ conda create -n conanr python=3.8
 (2) Install the following packages using Pip or Conda under this environment:
 
 ```
-transformers==4.22.2    # 其他版本可能会出现错误。
+transformers==4.22.2    # Other versions may have errors.
 datasets
 Pillow
 torch
@@ -30,7 +30,7 @@ pip install .
 
 
 
-### 2.获取SANTA Checkpoint
+### 2.Get SANTA Checkpoint
 
 The checkpoint of the pretrained SANTA model on `Python` data is [here](https://huggingface.co/OpenMatch/santa-code-python-adv). 
 
@@ -40,17 +40,17 @@ The checkpoint of the pretrained SANTA model on `Python` data is [here](https://
 
 1. **download dataset**
 
-   你可以从Google Drive上下载实验所需要的数据。
+   You can download the data for the experiment from Google Drive.
 
    ```
-   数据目录结构
+   data dir
    ```
 
    
 
 2. **build code**
 
-   将数据集转化成OpenMatch所需要的格式。cd到CONAN-R/build_code目录，运行build_code.sh。build_code.sh文件内容如下：
+   Convert the dataset to the format required by OpenMatch. cd to CONAN-R/build_code and run build_code.sh. The build_code.sh file has the following contents:
 
    ```bash
    export CUDA_VISIBLE_DEVICES=3
@@ -70,7 +70,7 @@ The checkpoint of the pretrained SANTA model on `Python` data is [here](https://
 
 3. **finetune**
 
-   你可以参考CONAN-R/OpenMatch/train.sh脚本去在每个任务的数据集上微调检索器，得到CONAN-R。train.sh.sh文件内容如下：
+   You can use the CONAN-R/OpenMatch/train.sh script to fine-tune the retriever on each task's dataset to get CONAN-R. The train.sh.sh file is as follows:
 
    ```bash
    export CUDA_VISIBLE_DEVICES=0
@@ -96,20 +96,36 @@ The checkpoint of the pretrained SANTA model on `Python` data is [here](https://
 
 4. infer (get embedding)
 
+   You can use the infer bash scripts: /infer/infer.sh
+
+   ```bash
+   export CUDA_VISIBLE_DEVICES=3
+   nohup python infer.py \
+          --data_path /data1/wanghanbin/CONAN/dataset/gen/concode/java/train.jsonl \
+          --save_name save_vec_concode_java_train \
+          --lang java \
+          --pretrained_dir /data3/lixinze/CONAN/codebert/gen/concode/code_bert/checkpoint-60000/ \
+          --num_vec -1 \
+          --eval_batch_size 64 \
+          --block_size 512 \
+          --logging_steps 100 > /data1/wanghanbin/CONAN/search_dense_results_codebert/gen/concode/java/infer_save_vec_concode_java_train.log 2>&1 &
+   
+   ```
+
    
 
 5. search (get search results)
 
    ```bash
-   export CUDA_VISIBLE_DEVICES=1    #指定gpu 
+   export CUDA_VISIBLE_DEVICES=1     
    nohup python -m openmatch.driver.train_dr  \
-       --output_dir /data1/wanghanbin/train_retriever/OpenMatch/save/codet5_1e-5_10_code2nl_xinze/  \	#输出目录
-       --model_name_or_path /data1/wanghanbin/train_retriever/OpenMatch/save/codet5_xinze/best_dev/ \	#模型路径
+       --output_dir /data1/wanghanbin/train_retriever/OpenMatch/save/codet5_1e-5_10_code2nl_xinze/  \	#output dir
+       --model_name_or_path /data1/wanghanbin/train_retriever/OpenMatch/save/codet5_xinze/best_dev/ \	#model dir
        --do_train  \
        --save_steps 1000  \
        --eval_steps 1000  \
-       --train_path /data1/wanghanbin/train_retriever/dataset/python/train_ids.jsonl  \    # train_ids目录
-       --eval_path /data1/wanghanbin/train_retriever/dataset/python/valid_ids.jsonl  \		# dev_ids目录
+       --train_path /data1/wanghanbin/train_retriever/dataset/python/train_ids.jsonl  \    # train_ids dir
+       --eval_path /data1/wanghanbin/train_retriever/dataset/python/valid_ids.jsonl  \		# dev_ids dir
        --per_device_train_batch_size 16  \	
        --train_n_passages 1  \
        --learning_rate 1e-5  \
