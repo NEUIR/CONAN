@@ -40,11 +40,7 @@ The checkpoint of the pretrained SANTA model on `Python` data is [here](https://
 
 1. **download dataset**
 
-   You can download the data for the experiment from Google Drive.
-
-   ```
-   data dir
-   ```
+   You can download the data for the experiment from [REDCODER](https://arxiv.org/abs/2305.19912)
 
    
 
@@ -56,11 +52,11 @@ The checkpoint of the pretrained SANTA model on `Python` data is [here](https://
    export CUDA_VISIBLE_DEVICES=3
    
    # build gen_cgcsn_python_train.jsonl
-   nohup python /data1/wanghanbin/CONAN_NEUIR/CONAN-R/build_code/build_code.py  \
+   nohup python /data1/xxx/CONAN_NEUIR/CONAN-R/build_code/build_code.py  \
        --task gen \
        --tokenizer_path /data4/codebert/base/ \
-       --trainfile /data1/wanghanbin/CONAN/dataset/gen/cgcsn/python/train.jsonl \
-       --savefile /data1/wanghanbin/CONAN/dataset_ids_codebert/gen/cgcsn/python/train_ids.jsonl > ../build_code_log/build_gen_cgcsn_python_train.log 2>&1 &
+       --trainfile /data1/xxx/CONAN/dataset/gen/cgcsn/python/train.jsonl \
+       --savefile /data1/xxx/CONAN/dataset_ids_codebert/gen/cgcsn/python/train_ids.jsonl > ../build_code_log/build_gen_cgcsn_python_train.log 2>&1 &
    
    
    ... build other dataset
@@ -75,13 +71,13 @@ The checkpoint of the pretrained SANTA model on `Python` data is [here](https://
    ```bash
    export CUDA_VISIBLE_DEVICES=0
    nohup python -m openmatch.driver.train_dr  \
-       --output_dir /data1/wanghanbin/CONAN/code_bert_hanbin  \
+       --output_dir /data1/xxx/CONAN/code_bert_hanbin  \
        --model_name_or_path /data4/codebert/base \
        --do_train  \
        --save_steps 1000  \
        --eval_steps 1000  \
-       --train_path /data1/wanghanbin/CONAN/dataset_ids_codebert/gen/cgcsn/python/train_ids.jsonl  \
-       --eval_path /data1/wanghanbin/CONAN/dataset_ids_codebert/gen/cgcsn/python/dev_ids.jsonl  \
+       --train_path /data1/xxx/CONAN/dataset_ids_codebert/gen/cgcsn/python/train_ids.jsonl  \
+       --eval_path /data1/xxx/CONAN/dataset_ids_codebert/gen/cgcsn/python/dev_ids.jsonl  \
        --per_device_train_batch_size 16  \
        --train_n_passages 1  \
        --learning_rate 2e-5  \
@@ -89,7 +85,7 @@ The checkpoint of the pretrained SANTA model on `Python` data is [here](https://
        --q_max_len 50  \
        --p_max_len 256  \
        --num_train_epochs 10  \
-       --logging_dir /data1/wanghanbin/CONAN/code_bert_log_hanbin > /data1/wanghanbin/CONAN/code_bert_hanbin.log 2>&1 &
+       --logging_dir /data1/xxx/CONAN/code_bert_log_hanbin > /data1/xxx/CONAN/code_bert_hanbin.log 2>&1 &
    ```
 
    
@@ -101,14 +97,14 @@ The checkpoint of the pretrained SANTA model on `Python` data is [here](https://
    ```bash
    export CUDA_VISIBLE_DEVICES=3
    nohup python infer.py \
-          --data_path /data1/wanghanbin/CONAN/dataset/gen/concode/java/train.jsonl \
+          --data_path /data1/xxx/CONAN/dataset/gen/concode/java/train.jsonl \
           --save_name save_vec_concode_java_train \
           --lang java \
-          --pretrained_dir /data3/lixinze/CONAN/codebert/gen/concode/code_bert/checkpoint-60000/ \
+          --pretrained_dir /data3/xxx/CONAN/codebert/gen/concode/code_bert/checkpoint-60000/ \
           --num_vec -1 \
           --eval_batch_size 64 \
           --block_size 512 \
-          --logging_steps 100 > /data1/wanghanbin/CONAN/search_dense_results_codebert/gen/concode/java/infer_save_vec_concode_java_train.log 2>&1 &
+          --logging_steps 100 > /data1/xxx/CONAN/search_dense_results_codebert/gen/concode/java/infer_save_vec_concode_java_train.log 2>&1 &
    
    ```
 
@@ -119,13 +115,13 @@ The checkpoint of the pretrained SANTA model on `Python` data is [here](https://
    ```bash
    export CUDA_VISIBLE_DEVICES=1     
    nohup python -m openmatch.driver.train_dr  \
-       --output_dir /data1/wanghanbin/train_retriever/OpenMatch/save/codet5_1e-5_10_code2nl_xinze/  \	#output dir
+       --output_dir /data1/xxx/train_retriever/OpenMatch/save/codet5_1e-5_10_code2nl_xinze/  \	#output dir
        --model_name_or_path /data1/wanghanbin/train_retriever/OpenMatch/save/codet5_xinze/best_dev/ \	#model dir
        --do_train  \
        --save_steps 1000  \
        --eval_steps 1000  \
-       --train_path /data1/wanghanbin/train_retriever/dataset/python/train_ids.jsonl  \    # train_ids dir
-       --eval_path /data1/wanghanbin/train_retriever/dataset/python/valid_ids.jsonl  \		# dev_ids dir
+       --train_path /data1/xxx/train_retriever/dataset/python/train_ids.jsonl  \    # train_ids dir
+       --eval_path /data1/xxx/train_retriever/dataset/python/valid_ids.jsonl  \		# dev_ids dir
        --per_device_train_batch_size 16  \	
        --train_n_passages 1  \
        --learning_rate 1e-5  \
@@ -133,6 +129,6 @@ The checkpoint of the pretrained SANTA model on `Python` data is [here](https://
        --q_max_len 50  \
        --p_max_len 240  \
        --num_train_epochs 10  \
-       --logging_dir /data1/wanghanbin/train_retriever/OpenMatch/save/codet5_1e-5_10_code2nl_xinze_log/ > /data1/wanghanbin/train_retriever/OpenMatch/save/codet5_1e-5_10_code2nl_xinze.log 2>&1 &
+       --logging_dir /data1/xxx/train_retriever/OpenMatch/save/codet5_1e-5_10_code2nl_xinze_log/ > /data1/xxx/train_retriever/OpenMatch/save/codet5_1e-5_10_code2nl_xinze.log 2>&1 &
    ```
 
