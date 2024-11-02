@@ -40,7 +40,7 @@ The checkpoint of the pretrained SANTA model on `Python` data is [here](https://
 
 1. **download dataset**
 
-   You can download the data for the experiment from [REDCODER](https://arxiv.org/abs/2305.19912)
+   You can download the code generation/ and data for the experiment from [REDCODER](https://arxiv.org/abs/2305.19912) and [REACC](https://github.com/microsoft/ReACC)
 
    
 
