@@ -8,9 +8,10 @@ We propose **CO**de assista**N**t vi**A** retrieval-augme**N**ted language model
 CONAN consists of two parts, CONAN-R and CONAN-G. You can use them seperately as well.
 
 ### CONAN-R
-CONAN-R use CodeT5-base initialization, and then fine-tune on each task of training set.
+CONAN-R use CodeT5-base initialization, and then fine-tune on each task of training set.  
 
-*** 1.Requirements ***
+#### 1.Requirements
+
 (1) Creating a virtual Environment
 
 ```bash
@@ -35,20 +36,20 @@ cd OpenMatch
 pip install .
 ```
 
-*** 2.Get SANTA Checkpoint *** 
+#### 2.Get SANTA Checkpoint
 
 The checkpoint of the pretrained CONAN-R model on `Python` data is [here](https://huggingface.co/OpenMatch/santa-code-python-adv). The pre-training code and README file for CONANA-R can be found [here](https://github.com/OpenMatch/SANTA).
 
 
-*** 3.Finetune ***
+#### 3.Finetune 
 
 After pre-training CONAN-R, you can use the following process to fine-tune CONAN-R on the appropriate retrieval corpus.
 
-1. **download dataset**
+(1) download dataset**
 You can download the data for the experiment from [REDCODER](https://arxiv.org/abs/2305.19912) and [REACC](https://github.com/microsoft/ReACC)
 
 
-2. **build code**
+(2) build code
 
 Convert the dataset to the format required by OpenMatch. Open ```CONAN-R/build_code``` and run ```build_code.sh```. This process allows you to build queries in REDCODER and REACC into the format used by openmatch.
 
@@ -56,23 +57,22 @@ Convert the dataset to the format required by OpenMatch. Open ```CONAN-R/build_c
 bash build_code.sh
 ```
 
-3. **finetune**
+(3) finetune
 You can use the ```CONAN-R/OpenMatch/train.sh``` script to fine-tune the retriever on each task's dataset to get CONAN-R. 
 ```bash
 bash train.sh
 ```
 
-4. **inference**
+(4) inference
 After obtaining the fine-tuned CONAN-R, you need to use the fine-tuned CONAN-R to encode the code retrieval corpus. 
 For different tasks and datasets, you need to use the CONAN-R fine-tuned on the corresponding datasets to encode the relevant corpora. Open ```CONAN-R/infer``` and run the script on the corresponding dataset. 
-
-5. **search**
+(5) search
 After obtaining the embeddings for the corpora corresponding to each task, you need to retriever the code documents for the respective tasks. You can open folder ```search``` and run the script to retrieve the corresponding augmentation code documents for different training and testing datasets.
 
-# CONAN-G
+### CONAN-G
 CONAN-G use CodeT5-base initialization, and finetune using the training dataset inferred from CONAN-R in the previous step.
 
-*** 1.Requirements ***
+#### 1.Requirements
 
 (1) Creating a virtual Environment
 
@@ -86,14 +86,14 @@ conda create -n conang python=3.8
 cd CONAN-G
 pin install -r requirements.txt
 ```
-*** 2.Training ***
+#### 2.Training 
 You need to use the relevant training data retrieved by CONAN-R to fine-tune the CONAN-G model. Open ```CONAN-G``` and run ```train_reader.sh``` for the corresponding dataset.
 
 ```bash
 bash train_reader.sh
 ```
 
-*** 3. Evaluation *** 
+#### 3.Evaluation
 
 After training CONAN-G, you need to use CONAN-R to retrieve the augmentation code documents for the test datasets. Then, Open ```CONAN-G``` and run ```test_reader.sh``` to test the performance of CONAN-G on these retrieved test datasets.
 ```bash
